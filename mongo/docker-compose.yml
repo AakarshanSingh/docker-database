@@ -1,0 +1,16 @@
+services:
+  mongo:
+    image: mongo:jammy
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db_data/:/data/db/
+      - /etc/timezone:/etc/timezone:ro
+  mongoexpress:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017
+    depends_on:
+      - mongo
