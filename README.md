@@ -24,13 +24,19 @@ cd docker-database
 
 #### Starting Services
 
-To start a specific service, use the following command:
+To start a specific service, run the script and select from the menu:
 
 ```bash
-./container.sh <service_name>
+./container.sh
 ```
 
-**Available service names:** `mongo`, `sql`, `postgres`
+The script will display a menu with options:
+1. MongoDB
+2. PostgreSQL
+3. MySQL
+4. Stop all services
+
+Enter the corresponding number to start the desired database or stop all services.
 
 #### Stopping Running Containers
 
@@ -66,10 +72,10 @@ http://localhost:8080
 | Parameter    | Description                                                             |
 | ------------ | ----------------------------------------------------------------------- |
 | **System**   | Choose the database name from options                                   |
-| **Server**   | Docker container name (`postgres` or `mysql`)                           |
-| **Username** | Check the `docker-compose.yml` file (e.g., `prisma` or `root`)          |
-| **Password** | Check the `docker-compose.yml` file (e.g., `prisma` or `root_password`) |
-| **Database** | Docker container name (e.g., `prisma_db` or `my_database`)              |
+| **Server**   | Docker container name (`postgres_container` or `mysql_container`)      |
+| **Username** | Check the `docker-compose.yml` file (e.g., `postgres_user` or `mysql_user`) |
+| **Password** | Check the `docker-compose.yml` file (e.g., `postgres_password` or `mysql_password`) |
+| **Database** | Check the `docker-compose.yml` file (e.g., `postgres_database` or `mysql_database`) |
 
 ## Custom User and Password for Database
 
@@ -88,11 +94,11 @@ mongodb://localhost:27017/<db_name>
 #### PostgreSQL
 
 ```bash
-postgresql://prisma:prisma@localhost:5432/<db_name>?schema=public
+postgresql://postgres_user:postgres_password@localhost:5432/<db_name>?schema=public
 ```
 
 #### MySQL
 
 ```bash
-mysql://root:root_password@localhost:3306/<db_name>
+mysql://mysql_user:mysql_password@localhost:3306/<db_name>
 ```
